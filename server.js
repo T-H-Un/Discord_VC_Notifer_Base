@@ -42,7 +42,7 @@ http.createServer(function(req, res){
 //if Bot status is "ready", call this function. It7s start log and Set status of Bot.
 client.on('ready', message =>{
   console.log('Bot_Ready');
-  client.user.setActivity('祝！ガンダムオンラインサービス終了！！', { type: 'PLAYING' });
+  client.user.setActivity('Game', { type: 'PLAYING' });
 });
 
 
