@@ -60,9 +60,9 @@ var end_buf=Date.now();
 client.on('voiceStateUpdate', (oldGuildMember, newGuildMember) =>{
   if(oldGuildMember.channelId==undefined&&newGuildMember.channelId!=undefined){
     if (newGuildMember.channelId == process.env.VOICE_CHANNEL_ID) {
-      console.log("特定のボイスチャットチャンネルのみ反映");//OK
+      console.log("特定のボイスチャットチャンネルのみ反映");
     if(client.channels.cache.get(newGuildMember.channelId).members.size==1){
-    console.log("通話開始かどうかの条件判定");//OK
+    console.log("通話開始かどうかの条件判定");
     let text="@everyone<@" + newGuildMember.id +"> が通話を開始しました。\n";
     client.channels.cache.get(process.env.TEXT_CHANNEL_ID).send(text);//このIDを送りたいチャンネルにする。1回は発言していないとおかしくなるかも。
     start_buf = Date.now();
@@ -71,12 +71,10 @@ client.on('voiceStateUpdate', (oldGuildMember, newGuildMember) =>{
   }
   
   if(newGuildMember.channelId==undefined&&oldGuildMember.channelId!=undefined){
-    //console.log(client.channels.cache.get(oldGuildMember.channelId).members.size);
-    console.log("通話終了の判定");//OK
+    console.log("通話終了の判定");
     let text="通話が終了しました。\n";
-    //newGuildMember
     if (oldGuildMember.channelId == process.env.VOICE_CHANNEL_ID) {
-      console.log("特定のボイスチャンネル判定終わり");//OK
+      console.log("特定のボイスチャンネル判定終わり");
      if(client.channels.cache.get(oldGuildMember.channelId).members.size==0){
        console.log("最後の判定");
     client.channels.cache.get(process.env.TEXT_CHANNEL_ID).send(text);
